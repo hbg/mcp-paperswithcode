@@ -244,8 +244,8 @@ async def explain_paper(paper_url: str) -> str:
     count = len(pdf_file.pages)
     output = ""
     for i in range(count):
-        page = pdf_file.getPage(i)
-        output += page.extractText()
+        page = pdf_file.pages[i]
+        output += page.extract_text()
     return {
         "output": output
     }
