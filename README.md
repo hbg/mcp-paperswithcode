@@ -66,4 +66,5 @@ To install mcp-paperswithcode for Claude Desktop automatically via [Smithery](ht
 
 ```bash
 npx -y @smithery/cli install @hbg/mcp-paperswithcode --client claude
+```y @smithery/cli@latest run @hbg/mcp-paperswithcode --config "{}"
 ```
