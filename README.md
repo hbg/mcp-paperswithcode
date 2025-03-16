@@ -1,5 +1,7 @@
 # mcp-paperswithcode
 
+[![smithery badge](https://smithery.ai/badge/@hbg/mcp-paperswithcode)](https://smithery.ai/server/@hbg/mcp-paperswithcode)
+
 # Description
 
 This repository provides an Model Context Protocol (MCP) client that can interface with the PapersWithCode API. Specifically, these MCP tools provide the API's abilities to get authors, papers, conferences, repositories, methods, results and tasks.
@@ -56,4 +58,20 @@ Additionally, helper tools are introduced to make it easier for the AI agent to 
 
 ## Claude
 
+```
+npx -y @smithery/cli@latest install @hbg/mcp-paperswithcode --client claude
+```
+
 ## Cursor
+
+### Mac / Linux
+
+```
+npx -y @smithery/cli@latest run @hbg/mcp-paperswithcode --config "{}"
+```
+
+### Windows
+
+```
+cmd /c npx -y @smithery/cli@latest run @hbg/mcp-paperswithcode --config "{}"
+```
