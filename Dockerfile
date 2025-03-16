@@ -15,4 +15,4 @@ RUN pip install --no-cache-dir "mcp[cli]>=1.4.1" "pypdf2>=3.0.1" "requests>=2.32
 # Expose port if needed (optional)
 # EXPOSE 8000
 
-CMD ["python", "server.py"]
+CMD ["python", "src/mcp_paperswithcode/server.py"]
