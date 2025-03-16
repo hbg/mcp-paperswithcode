@@ -241,7 +241,7 @@ async def explain_paper(paper_url: str) -> str:
     response = requests.get(url=paper_url, headers=headers, timeout=120)
     content_io = io.BytesIO(response.content)
     pdf_file = PdfReader(content_io)
-    count = pdf_file.numPages
+    count = len(pdf_file.pages)
     output = ""
     for i in range(count):
         page = pdf_file.getPage(i)
