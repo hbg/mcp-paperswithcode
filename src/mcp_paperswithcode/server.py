@@ -21,7 +21,8 @@ def encode_non_null_params(params):
 
 @mcp.tool()
 async def search_research_areas(
-    query: Optional[str], name: Optional[str],
+    query: Optional[str],
+    name: Optional[str],
     page: Optional[int] = 1,
     items_per_page: Optional[int] = 20
 ) -> str:
