@@ -48,13 +48,15 @@ Additionally, helper tools are introduced to make it easier for the AI agent to 
 
 - `list_conference_papers(conference_id: str, proceeding_id: str, page: Optional[int] = 1, items_per_page: Optional[int] = 20)`: List papers presented at a specific conference proceeding.
 
-- `search_papers(abstract: Optional[str] = None, title: Optional[str] = None, arxiv_id: Optional[str] = None, q: Optional[str] = None, page: Optional[int] = 1, items_per_page: Optional[int] = 20)`: Search for papers with optional filtering by abstract, title, arxiv ID, or general query.
+- `search_papers(abstract: Optional[str] = None, title: Optional[str] = None, arxiv_id: Optional[str] = None, page: Optional[int] = 1, items_per_page: Optional[int] = 20)`: Search for papers with optional filtering by abstract, title, arxiv ID, or general query.
 
 - `get_paper(paper_id: str)`: Get detailed information about a specific paper by ID.
 
 - `list_paper_datasets(paper_id: str, page: Optional[int] = 1, items_per_page: Optional[int] = 20)`: List datasets used or referenced in a specific paper.
 
 # Example Usage
+
+## Claude
 
 ## Cursor
 
@@ -64,4 +66,5 @@ To install mcp-paperswithcode for Claude Desktop automatically via [Smithery](ht
 
 ```bash
 npx -y @smithery/cli install @hbg/mcp-paperswithcode --client claude
+```y @smithery/cli@latest run @hbg/mcp-paperswithcode --config "{}"
 ```

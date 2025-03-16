@@ -101,7 +101,7 @@ async def list_papers_by_author_name(author_name: str, page: Optional[int] = 1, 
 async def list_conferences(conference_name: Optional[str] = None, q: Optional[str] = None, page: Optional[int] = 1, items_per_page: Optional[int] = 20) -> str:
     """List the conferences in PapersWithCode"""
     params = {
-        "conference_name": conference_name,
+        "name": conference_name,
         "q": q,
         "page": page,
         "items_per_page": items_per_page
@@ -152,14 +152,13 @@ async def list_conference_papers(conference_id: str, proceeding_id: str, page: O
         return response.json()
 
 @mcp.tool()
-async def search_papers(abstract: Optional[str] = None, title: Optional[str] = None, arxiv_id: Optional[str] = None, q: Optional[str] = None, page: Optional[int] = 1, items_per_page: Optional[int] = 20) -> str:
+async def search_papers(abstract: Optional[str] = None, title: Optional[str] = None, arxiv_id: Optional[str] = None, page: Optional[int] = 1, items_per_page: Optional[int] = 20) -> str:
     """Search for a paper in PapersWithCode"""
     params = {
         "abstract": abstract,
         "title": title,
         "arxiv_id": arxiv_id,
-        "q": q,
-        "page": page,
+         "page": page,
         "items_per_page": items_per_page
     }
     async with httpx.AsyncClient() as client:
