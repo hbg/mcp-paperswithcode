@@ -58,20 +58,13 @@ Additionally, helper tools are introduced to make it easier for the AI agent to 
 
 ## Claude
 
-```
-npx -y @smithery/cli@latest install @hbg/mcp-paperswithcode --client claude
-```
-
 ## Cursor
 
-### Mac / Linux
+### Installing via Smithery
 
-```
-npx -y @smithery/cli@latest run @hbg/mcp-paperswithcode --config "{}"
-```
+To install mcp-paperswithcode for Claude Desktop automatically via [Smithery](https://smithery.ai/server/@hbg/mcp-paperswithcode):
 
-### Windows
-
-```
-cmd /c npx -y @smithery/cli@latest run @hbg/mcp-paperswithcode --config "{}"
+```bash
+npx -y @smithery/cli install @hbg/mcp-paperswithcode --client claude
+```y @smithery/cli@latest run @hbg/mcp-paperswithcode --config "{}"
 ```
