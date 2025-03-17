@@ -21,8 +21,7 @@ def encode_non_null_params(params):
 
 @mcp.tool()
 async def search_research_areas(
-    query: Optional[str],
-    name: Optional[str],
+    name: str,
     page: Optional[int] = 1,
     items_per_page: Optional[int] = 20
 ) -> str:
@@ -30,7 +29,6 @@ async def search_research_areas(
     params = {
         "page": page,
         "items_per_page": items_per_page,
-        "q": query,
         "name": name
     }
     url = f"{BASE_URL}/areas/?{encode_non_null_params(params)}"
@@ -67,18 +65,16 @@ async def list_research_area_tasks(
 
 
 @mcp.tool()
-async def list_paper_authors(
+async def get_paper_author(
+    full_name: str,
     page: Optional[int] = 1,
     items_per_page: Optional[int] = 20,
-    full_name: Optional[str] = None,
-    query: Optional[str] = None
 ) -> str:
     """List the authors for a given paper ID in PapersWithCode"""
     params = {
         "page": page,
         "items_per_page": items_per_page,
         "full_name": full_name,
-        "q": query
     }
     url = f"{BASE_URL}/authors/?{encode_non_null_params(params)}"
     async with httpx.AsyncClient() as client:
@@ -118,7 +114,7 @@ async def list_papers_by_author_name(
     page: Optional[int] = 1,
     items_per_page: Optional[int] = 20
 ) -> str:
-    """List the papers written by a given author ID in PapersWithCode"""
+    """List the papers written by a given author name in PapersWithCode"""
     author_id = await get_paper_author(author_name)["id"]
     params = {
         "page": page,
@@ -133,14 +129,12 @@ async def list_papers_by_author_name(
 @mcp.tool()
 async def list_conferences(
     conference_name: Optional[str] = None,
-    q: Optional[str] = None,
     page: Optional[int] = 1,
     items_per_page: Optional[int] = 20
 ) -> str:
     """List the conferences in PapersWithCode"""
     params = {
         "name": conference_name,
-        "q": q,
         "page": page,
         "items_per_page": items_per_page
     }
@@ -177,9 +171,9 @@ async def list_conference_proceedings(
 
 
 @mcp.tool()
-async def get_conference_proceeding(proceeding_id: str) -> str:
+async def get_conference_proceeding(conference_id: str, proceeding_id: str) -> str:
     """Get a proceeding by ID in PapersWithCode"""
-    url = f"{BASE_URL}/proceedings/{proceeding_id}/"
+    url = f"{BASE_URL}/conferences/{conference_id}/proceedings/{proceeding_id}/"
     async with httpx.AsyncClient() as client:
         response = await client.get(url)
         return response.json()

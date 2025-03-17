@@ -26,13 +26,12 @@ npx -y @smithery/cli install @hbg/mcp-paperswithcode --client claude
 
 1. **Search Papers**
 
-   Search for papers with optional filtering by abstract, title, arxiv ID, or general query:
+   Search for papers with optional filtering by abstract, title, arxiv ID:
 
    ```python
    result = await search_papers(
-       q="transformer architecture",
-       abstract=None,
-       title=None,
+       abstract="neural networks",
+       title="attention mechanism",
        arxiv_id=None,
        page=1,
        items_per_page=20
@@ -49,13 +48,13 @@ npx -y @smithery/cli install @hbg/mcp-paperswithcode --client claude
    )
    ```
 
-3. **Explain Paper**
+3. **Read Paper From URL**
 
-   Provides an explanation of a paper by its URL in PapersWithCode:
+   Extract and read the content of a paper from its URL:
 
    ```python
-   result = await explain_paper(
-       paper_url="https://paperswithcode.com/paper/attention-is-all-you-need"
+   result = await read_paper_from_url(
+       paper_url="https://arxiv.org/pdf/1706.03762.pdf"
    )
    ```
 
@@ -97,27 +96,7 @@ npx -y @smithery/cli install @hbg/mcp-paperswithcode --client claude
    )
    ```
 
-4. **List Paper Authors**
-
-   Retrieves the authors of a specific paper ID:
-
-   ```python
-   result = await list_paper_authors(
-       paper_id="paper123"
-   )
-   ```
-
-5. **List Paper Conferences**
-
-   Lists the conferences associated with a given paper ID:
-
-   ```python
-   result = await list_paper_conferences(
-       paper_id="paper123"
-   )
-   ```
-
-6. **List Paper Repositories**
+4. **List Paper Repositories**
 
    Retrieves the repositories linked to a specific paper ID:
 
@@ -129,7 +108,7 @@ npx -y @smithery/cli install @hbg/mcp-paperswithcode --client claude
    )
    ```
 
-7. **List Paper Datasets**
+5. **List Paper Datasets**
 
    List datasets used or referenced in a specific paper:
 
@@ -149,8 +128,7 @@ npx -y @smithery/cli install @hbg/mcp-paperswithcode --client claude
 
    ```python
    result = await search_research_areas(
-       query="computer vision",
-       name=None,
+       name="computer vision",
        page=1,
        items_per_page=20
    )
@@ -180,30 +158,19 @@ npx -y @smithery/cli install @hbg/mcp-paperswithcode --client claude
 
 ## Authors
 
-1. **List Paper Authors**
+1. **Get Paper Author**
 
-   List authors with optional filtering by name or query:
+   Get authors matching a full name:
 
    ```python
-   result = await list_paper_authors(
+   result = await get_paper_author(
        full_name="Geoffrey Hinton",
-       query=None,
        page=1,
        items_per_page=20
    )
    ```
 
-2. **Get Paper Author**
-
-   Get detailed information about a specific author by ID:
-
-   ```python
-   result = await get_paper_author(
-       author_id="author123"
-   )
-   ```
-
-3. **List Papers by Author ID**
+2. **List Papers by Author ID**
 
    List papers written by a specific author using their ID:
 
@@ -215,28 +182,15 @@ npx -y @smithery/cli install @hbg/mcp-paperswithcode --client claude
    )
    ```
 
-4. **List Papers by Author Name**
-
-   List papers written by an author using their name:
-
-   ```python
-   result = await list_papers_by_author_name(
-       author_name="Geoffrey Hinton",
-       page=1,
-       items_per_page=20
-   )
-   ```
-
 ## Conferences
 
 1. **List Conferences**
 
-   List conferences with optional filtering by name or query:
+   List conferences with optional filtering by name:
 
    ```python
    result = await list_conferences(
        conference_name="NeurIPS",
-       q=None,
        page=1,
        items_per_page=20
    )
@@ -270,6 +224,7 @@ npx -y @smithery/cli install @hbg/mcp-paperswithcode --client claude
 
    ```python
    result = await get_conference_proceeding(
+       conference_id="conf123",
        proceeding_id="proc123"
    )
    ```
