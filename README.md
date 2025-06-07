@@ -6,9 +6,9 @@
 
 > Allows AI assistants to find and read papers, as well as view related code repositories for further context.
 
-This MCP server provides an Model Context Protocol (MCP) client that can interface with the PapersWithCode API.
+This MCP server provides a Model Context Protocol (MCP) client that interfaces with the PapersWithCode API.
 
-Additionally, helper tools are introduced to make it easier for the AI agent to make use of the information provided through the PapersWithCode API.
+It includes tools for searching, retrieving, and parsing information on research papers, authors, datasets, conferences, and more.
 
 # 🚀 Getting Started
 
@@ -20,225 +20,116 @@ To install mcp-paperswithcode for Claude Desktop automatically via [Smithery](ht
 npx -y @smithery/cli install @hbg/mcp-paperswithcode --client claude
 ```
 
-# Tools
+# 🛠️ Tools
 
-## Paper Search and Retrieval
+## 📚 Paper Tools
 
-1. **Search Papers**
+### `search_papers`
+Search for papers using optional filters.
 
-   Search for papers with optional filtering by abstract, title, arxiv ID:
+- `abstract` (str, optional): Filter by abstract text.
+- `title` (str, optional): Filter by title text.
+- `arxiv_id` (str, optional): Filter by ArXiv ID.
 
-   ```python
-   result = await search_papers(
-       abstract="neural networks",
-       title="attention mechanism",
-       arxiv_id=None,
-       page=1,
-       items_per_page=20
-   )
-   ```
+### `get_paper`
+Get a paper's metadata by its ID.
 
-2. **Get Paper**
+- `paper_id` (str): The paper ID.
 
-   Get detailed information about a specific paper by ID:
+### `read_paper_from_url`
+Extract readable text from a paper given its URL.
 
-   ```python
-   result = await get_paper(
-       paper_id="paper123"
-   )
-   ```
+- `paper_url` (str): The direct PDF or HTML URL to a paper.
 
-3. **Read Paper From URL**
+### `list_paper_results`
+List benchmark results associated with a paper.
 
-   Extract and read the content of a paper from its URL:
+- `paper_id` (str): The paper ID.
 
-   ```python
-   result = await read_paper_from_url(
-       paper_url="https://arxiv.org/pdf/1706.03762.pdf"
-   )
-   ```
+### `list_paper_tasks`
+List tasks associated with a paper.
 
-## Paper Components
+- `paper_id` (str): The paper ID.
 
-1. **List Paper Results**
+### `list_paper_methods`
+List methods discussed in a paper.
 
-   Lists the results for a given paper ID in PapersWithCode:
+- `paper_id` (str): The paper ID.
 
-   ```python
-   result = await list_paper_results(
-       paper_id="paper123",
-       page=1,
-       items_per_page=20
-   )
-   ```
+### `list_paper_repositories`
+List code repositories linked to a paper.
 
-2. **List Paper Tasks**
+- `paper_id` (str): The paper ID.
 
-   Retrieves the tasks associated with a specific paper ID:
+### `list_paper_datasets`
+List datasets mentioned or used in a paper.
 
-   ```python
-   result = await list_paper_tasks(
-       paper_id="paper123",
-       page=1,
-       items_per_page=20
-   )
-   ```
+- `paper_id` (str): The paper ID.
 
-3. **List Paper Methods**
+## 🧠 Research Area Tools
 
-   Lists the methods related to a given paper ID:
+### `search_research_areas`
+Search research areas by name.
 
-   ```python
-   result = await list_paper_methods(
-       paper_id="paper123",
-       page=1,
-       items_per_page=20
-   )
-   ```
+- `name` (str): Partial or full name of the research area.
 
-4. **List Paper Repositories**
+### `get_research_area`
+Get metadata for a specific research area.
 
-   Retrieves the repositories linked to a specific paper ID:
+- `area_id` (str): The area ID.
 
-   ```python
-   result = await list_paper_repositories(
-       paper_id="paper123",
-       page=1,
-       items_per_page=20
-   )
-   ```
+### `list_research_area_tasks`
+List tasks associated with a research area.
 
-5. **List Paper Datasets**
+- `area_id` (str): The area ID.
 
-   List datasets used or referenced in a specific paper:
+## 👨‍🔬 Author Tools
 
-   ```python
-   result = await list_paper_datasets(
-       paper_id="paper123",
-       page=1,
-       items_per_page=20
-   )
-   ```
+### `search_authors`
+Search authors by full name.
 
-## Research Areas
+- `full_name` (str): Full name of the author.
 
-1. **Search Research Areas**
+### `get_paper_author`
+Get metadata for an author by ID.
 
-   Search for research areas that exist in PapersWithCode:
+- `author_id` (str): The author ID.
 
-   ```python
-   result = await search_research_areas(
-       name="computer vision",
-       page=1,
-       items_per_page=20
-   )
-   ```
+### `list_papers_by_author_id`
+List all papers written by an author via ID.
 
-2. **Get Research Area**
+- `author_id` (str): The author ID.
 
-   Get detailed information about a specific research area by ID:
+### `list_papers_by_author_name`
+Search by name and return papers for the first matching author.
 
-   ```python
-   result = await get_research_area(
-       area_id="area123"
-   )
-   ```
+- `author_name` (str): Full name of the author.
 
-3. **List Research Area Tasks**
+## 🎓 Conference Tools
 
-   List the tasks for a given research area ID:
+### `list_conferences`
+List conferences, optionally filter by name.
 
-   ```python
-   result = await list_research_area_tasks(
-       area_id="area123",
-       page=1,
-       items_per_page=20
-   )
-   ```
+- `conference_name` (str, optional): Full or partial name.
 
-## Authors
+### `get_conference`
+Get metadata for a specific conference.
 
-1. **Get Paper Author**
+- `conference_id` (str): The conference ID.
 
-   Get authors matching a full name:
+### `list_conference_proceedings`
+List all proceedings under a conference.
 
-   ```python
-   result = await get_paper_author(
-       full_name="Geoffrey Hinton",
-       page=1,
-       items_per_page=20
-   )
-   ```
+- `conference_id` (str): The conference ID.
 
-2. **List Papers by Author ID**
+### `get_conference_proceeding`
+Get details for a specific conference proceeding.
 
-   List papers written by a specific author using their ID:
+- `conference_id` (str): The conference ID.
+- `proceeding_id` (str): The proceeding ID.
 
-   ```python
-   result = await list_papers_by_author_id(
-       author_id="author123",
-       page=1,
-       items_per_page=20
-   )
-   ```
+### `list_conference_papers`
+List all papers for a specific conference proceeding.
 
-## Conferences
-
-1. **List Conferences**
-
-   List conferences with optional filtering by name:
-
-   ```python
-   result = await list_conferences(
-       conference_name="NeurIPS",
-       page=1,
-       items_per_page=20
-   )
-   ```
-
-2. **Get Conference**
-
-   Get detailed information about a specific conference by ID:
-
-   ```python
-   result = await get_conference(
-       conference_id="conf123"
-   )
-   ```
-
-3. **List Conference Proceedings**
-
-   List proceedings for a given conference:
-
-   ```python
-   result = await list_conference_proceedings(
-       conference_id="conf123",
-       page=1,
-       items_per_page=20
-   )
-   ```
-
-4. **Get Conference Proceeding**
-
-   Get detailed information about a specific conference proceeding:
-
-   ```python
-   result = await get_conference_proceeding(
-       conference_id="conf123",
-       proceeding_id="proc123"
-   )
-   ```
-
-5. **List Conference Papers**
-
-   List papers presented at a specific conference proceeding:
-
-   ```python
-   result = await list_conference_papers(
-       conference_id="conf123",
-       proceeding_id="proc123",
-       page=1,
-       items_per_page=20
-   )
-   ```
-
+- `conference_id` (str): The conference ID.
+- `proceeding_id` (str): The proceeding ID.
