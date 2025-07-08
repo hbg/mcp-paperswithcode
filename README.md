@@ -1,3 +1,5 @@
+[![MseeP.ai Security Assessment Badge](https://mseep.net/pr/hbg-mcp-paperswithcode-badge.png)](https://mseep.ai/app/hbg-mcp-paperswithcode)
+
 # mcp-paperswithcode
 
 [![smithery badge](https://smithery.ai/badge/@hbg/mcp-paperswithcode)](https://smithery.ai/server/@hbg/mcp-paperswithcode)
