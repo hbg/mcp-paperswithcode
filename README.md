@@ -1,4 +1,5 @@
 # mcp-paperswithcode
+[![Trust Score](https://archestra.ai/mcp-catalog/api/badge/quality/hbg/mcp-paperswithcode)](https://archestra.ai/mcp-catalog/hbg__mcp-paperswithcode)
 
 [![smithery badge](https://smithery.ai/badge/@hbg/mcp-paperswithcode)](https://smithery.ai/server/@hbg/mcp-paperswithcode)
 
