@@ -133,3 +133,8 @@ List all papers for a specific conference proceeding.
 
 - `conference_id` (str): The conference ID.
 - `proceeding_id` (str): The proceeding ID.
+
+## Hosted deployment
+
+A hosted deployment is available on [Fronteir AI](https://fronteir.ai/mcp/hbg-mcp-paperswithcode).
+
