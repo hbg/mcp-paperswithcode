@@ -1,6 +1,6 @@
 # mcp-paperswithcode
 
-[![smithery badge](https://smithery.ai/badge/@hbg/mcp-paperswithcode)](https://smithery.ai/server/@hbg/mcp-paperswithcode)
+[![Listed on LightNow](https://lightnow.ai/badge/io.github.hbg/mcp-paperswithcode?variant=listed)](https://lightnow.ai/servers/io.github.hbg/mcp-paperswithcode)
 
 # 🦾 Features
 
